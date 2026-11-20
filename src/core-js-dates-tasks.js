@@ -18,7 +18,8 @@
  * '04 Dec 1995 00:12:00 UTC' => 818035920000
  */
 function dateToTimestamp(date) {
-  return Date.parse(date);
+  const milliseconds = Date.parse(date);
+  return milliseconds;
 }
 
 /**
