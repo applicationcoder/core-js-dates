@@ -78,16 +78,16 @@ function getDayName(date) {
  */
 function getNextFriday(date) {
   const fridayNumber = 5;
-  const daysInWeek = 7;
+  const daysPerWeek = 7;
   const currentDay = date.getUTCDay();
   let daysUntilFriday = 0;
 
   if (currentDay === fridayNumber) {
-    daysUntilFriday = daysInWeek;
+    daysUntilFriday = daysPerWeek;
   } else if (currentDay < fridayNumber) {
     daysUntilFriday = fridayNumber - currentDay;
   } else if (currentDay > fridayNumber) {
-    daysUntilFriday = fridayNumber - currentDay + daysInWeek;
+    daysUntilFriday = fridayNumber - currentDay + daysPerWeek;
   }
 
   const nextfridayDate = new Date(date.getTime());
@@ -110,8 +110,8 @@ function getNextFriday(date) {
 function getCountDaysInMonth(month, year) {
   const previousMonthLastDay = 0;
   const date = new Date(year, month, previousMonthLastDay);
-  const daysInMonthCount = date.getDate();
-  return daysInMonthCount;
+  const daysPerMonthCount = date.getDate();
+  return daysPerMonthCount;
 }
 
 /**
@@ -125,8 +125,16 @@ function getCountDaysInMonth(month, year) {
  * '2024-02-01T00:00:00.000Z', '2024-02-02T00:00:00.000Z'  => 2
  * '2024-02-01T00:00:00.000Z', '2024-02-12T00:00:00.000Z'  => 12
  */
-function getCountDaysOnPeriod(/* dateStart, dateEnd */) {
-  throw new Error('Not implemented');
+function getCountDaysOnPeriod(dateStart, dateEnd) {
+  const endDate = Date.parse(dateEnd);
+  const startDate = Date.parse(dateStart);
+  const millisecondsPerDay = 86400000;
+
+  const differenceInDays = (endDate - startDate) / millisecondsPerDay;
+  const roundeddifferenceInDays = Math.round(differenceInDays);
+  const startingDay = 1;
+  const daysBetweenDates = roundeddifferenceInDays + startingDay;
+  return daysBetweenDates;
 }
 
 /**
