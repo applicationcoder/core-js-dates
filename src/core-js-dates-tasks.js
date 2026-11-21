@@ -33,7 +33,7 @@ function dateToTimestamp(date) {
  * Date(2015, 10, 20, 23, 15, 1) => '23:15:01'
  */
 function getTime(date) {
-  return date.toLocaleTimeString('ru-RU');
+return date.toTimeString().slice(0, 8);
 }
 
 /**
