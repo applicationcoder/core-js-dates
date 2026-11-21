@@ -34,7 +34,8 @@ function dateToTimestamp(date) {
  */
 function getTime(date) {
   const locale = 'ru-RU';
-  return date.toLocaleTimeString(locale);
+  const time = date.toLocaleTimeString(locale);
+  return time;
 }
 
 /**
