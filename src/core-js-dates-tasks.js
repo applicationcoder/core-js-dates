@@ -77,19 +77,21 @@ function getDayName(date) {
  * Date('2024-02-16T00:00:00Z') => Date('2024-02-23T00:00:00Z')
  */
 function getNextFriday(date) {
-  const result = new Date(date.getTime());
   const currentDay = date.getUTCDay();
+  const fridayNumber = 5;
+  const daysInWeek = 5;
   let daysUntilFriday = 0;
-  if (currentDay === 5) {
-    daysUntilFriday = 7;
-  } else if (currentDay < 5) {
-    daysUntilFriday = 5 - currentDay;
-  } else if (currentDay > 5) {
-    daysUntilFriday = 5 - currentDay + 7;
+
+  if (currentDay === fridayNumber) {
+    daysUntilFriday = daysInWeek;
+  } else if (currentDay < fridayNumber) {
+    daysUntilFriday = fridayNumber - currentDay;
+  } else if (currentDay > fridayNumber) {
+    daysUntilFriday = fridayNumber - currentDay + daysInWeek;
   }
 
-  result.setUTCDate(result.getUTCDate() + daysUntilFriday);
-  return result;
+  const nextFriday = new Date(date.getUTCDate() + daysUntilFriday);
+  return nextFriday;
 }
 
 /**
