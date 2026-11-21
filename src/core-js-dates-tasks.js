@@ -79,7 +79,14 @@ function getDayName(date) {
 function getNextFriday(date) {
   const result = new Date(date.getTime());
   const currentDay = result.getUTCDay();
-  const daysUntilFriday = (5 - currentDay + 7) % 7 || 7;
+  let daysUntilFriday = 0;
+  if (currentDay === 5) {
+    daysUntilFriday = 7;
+  } else if (currentDay < 5) {
+    daysUntilFriday = 5 - currentDay;
+  } else if (currentDay > 5) {
+    daysUntilFriday = 5 - currentDay + 7;
+  }
 
   result.setUTCDate(result.getUTCDate() + daysUntilFriday);
   return result;
