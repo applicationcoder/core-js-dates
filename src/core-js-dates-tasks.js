@@ -33,7 +33,7 @@ function dateToTimestamp(date) {
  * Date(2015, 10, 20, 23, 15, 1) => '23:15:01'
  */
 function getTime(date) {
-  const locale = 'ru-RU';
+  const locale = 'ru-BY';
   const time = date.toLocaleTimeString(locale);
   return time;
 }
@@ -173,8 +173,12 @@ function isDateInPeriod(date, period) {
  * '1999-01-05T02:20:00.000Z' => '1/5/1999, 2:20:00 AM'
  * '2010-12-15T22:59:00.000Z' => '12/15/2010, 10:59:00 PM'
  */
-function formatDate(/* date */) {
-  throw new Error('Not implemented');
+function formatDate(date) {
+  const originalDate = new Date(date);
+  const locale = 'en-US';
+  const timezone = { timeZone: 'UTC' };
+  const formattedDate = originalDate.toLocaleString(locale, timezone);
+  return formattedDate;
 }
 
 /**
