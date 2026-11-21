@@ -77,11 +77,12 @@ function getDayName(date) {
  * Date('2024-02-16T00:00:00Z') => Date('2024-02-23T00:00:00Z')
  */
 function getNextFriday(date) {
-  const result = new Date(date.getTime());
-  const currentDay = result.getUTCDay();
-  const daysUntilFriday = (5 - currentDay + 7) % 7 || 7;
+  const result = new Date(date);
 
-  result.setUTCDate(result.getUTCDate() + daysUntilFriday);
+  do {
+    result.setUTCDate(result.getUTCDate() + 1);
+  } while (result.getUTCDay() !== 5);
+
   return result;
 }
 
