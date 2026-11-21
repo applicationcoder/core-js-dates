@@ -90,10 +90,10 @@ function getNextFriday(date) {
     daysUntilFriday = fridayNumber - currentDay + daysInWeek;
   }
 
-  const fridayDate = new Date(date.getTime());
+  const nextfridayDate = new Date(date.getTime());
   const nextFridayNumber = date.getUTCDate() + daysUntilFriday;
-  fridayDate.setUTCDate(nextFridayNumber);
-  return fridayDate;
+  nextfridayDate.setUTCDate(nextFridayNumber);
+  return nextfridayDate;
 }
 
 /**
@@ -107,8 +107,11 @@ function getNextFriday(date) {
  * 1, 2024 => 31
  * 2, 2024 => 29
  */
-function getCountDaysInMonth(/* month, year */) {
-  throw new Error('Not implemented');
+function getCountDaysInMonth(month, year) {
+  const previousMonthLastDay = 0;
+  const date = new Date(year, month, previousMonthLastDay);
+  const daysInMonthCount = date.getDate();
+  return daysInMonthCount;
 }
 
 /**
