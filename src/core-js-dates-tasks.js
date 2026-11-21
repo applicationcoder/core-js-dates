@@ -60,7 +60,8 @@ function getDayName(date) {
     'Saturday',
   ];
   const dayIndex = new Date(date).getUTCDay();
-  return days[dayIndex];
+  const dayName = days[dayIndex];
+  return dayName;
 }
 
 /**
